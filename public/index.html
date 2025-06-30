@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delicious Bites</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+    
+      <h1>Delicious Bites</h1>
+    </div>
+  
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>BEST QUALITY FOOD</h2>
+      <p>At Delicious Bites, we serve fresh, flavorful dishes made with the finest ingredients. From sizzling starters to mouthwatering mains and delightful desserts, every bite is crafted to satisfy your cravings and leave you coming back for more.</p>
+      <a href="menu.html" class="btn">SEE OUR MENU</a>
+    </div>
+    <div class="hero-image">
+      <img src="https://as2.ftcdn.net/jpg/03/19/55/71/1000_F_319557131_LHcezvtbLLPMKmheISfrH89sRvNzvzf7.jpg" alt="Delicious food plates">
+    </div>
+  </section>
+  
+  
+
+  <footer>
+    <p>&copy; 2025 Delicious Bites. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const authLink = document.getElementById('authLink');
+    const userId = localStorage.getItem('user_id');
+
+    if (userId) {
+      authLink.innerHTML = '<a href="#" onclick="logout()">Logout</a>';
+    }
+
+    function logout() {
+      localStorage.clear();
+      alert("You have been logged out.");
+      window.location.reload();
+    }
+  </script>
+
+</body>
+</html>

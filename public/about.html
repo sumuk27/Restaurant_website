@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      /*background-color: #fffdf7;*/
+      background-image: url('https://t3.ftcdn.net/jpg/01/36/51/90/360_F_136519023_GHLiQY7LND4ylpw8XPPZH8oDYR4Vbbsi.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 1rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #ff980030;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #ff6347;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: white;
+    }
+
+    .review-form {
+      margin-top: 3rem;
+    }
+
+    .review-form label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: bold;
+    }
+
+    .stars {
+      display: flex;
+      gap: 10px;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .stars span {
+      color: #ddd;
+    }
+
+    .stars span.selected {
+      color: #ff9800;
+    }
+
+    textarea {
+      width: 97%;
+      height: 100px;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 1rem;
+      background-color: #ffffff2b;
+    }
+
+    #feedback::placeholder{
+      color: black;
+    }
+
+    button {
+      margin-top: 1rem;
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e0523d;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="order.html">Order</a></li>
+      <li><a href="about.html">About</a></li>
+      <li id="authLink"><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>About Our Restaurant</h2>
+    <p>We serve the finest quality food, crafted with love and delivered with care. From pizzas to pastas, desserts to salads — we’ve got it all!</p>
+
+    <div class="review-form">
+      <h2>Leave a Review</h2>
+
+      <label for="rating">Your Rating:</label>
+      <div class="stars" id="ratingStars">
+        <span data-value="1">&#9733;</span>
+        <span data-value="2">&#9733;</span>
+        <span data-value="3">&#9733;</span>
+        <span data-value="4">&#9733;</span>
+        <span data-value="5">&#9733;</span>
+      </div>
+
+      <label for="feedback">Your Feedback:</label>
+      <textarea id="feedback" placeholder="Write your feedback..."></textarea>
+
+      <button onclick="submitReview()">Submit Review</button>
+    </div>
+  </div>
+
+  <script>
+    const authLink = document.getElementById('authLink');
+    const userId = localStorage.getItem('user_id');
+    if (userId) {
+      authLink.innerHTML = '<a href="#" onclick="logout()">Logout</a>';
+    }
+
+    function logout() {
+      localStorage.clear();
+      alert("You have been logged out.");
+      window.location.reload();
+    }
+
+    // Star selection
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('#ratingStars span');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-value'));
+        stars.forEach(s => s.classList.remove('selected'));
+        for (let i = 0; i < selectedRating; i++) {
+          stars[i].classList.add('selected');
+        }
+      });
+    });
+
+    // Submit review
+    function submitReview() {
+      const feedback = document.getElementById('feedback').value;
+
+      if (!userId) {
+        alert("Please login to submit a review.");
+        return;
+      }
+
+      if (selectedRating === 0) {
+        alert("Please select a rating.");
+        return;
+      }
+
+      fetch('/api/review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: parseInt(userId),
+          rating: selectedRating,
+          feedback: feedback
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        document.getElementById('feedback').value = '';
+        stars.forEach(s => s.classList.remove('selected'));
+        selectedRating = 0;
+      });
+    }
+  </script>
+</body>
+</html>

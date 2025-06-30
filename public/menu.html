@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu</title>
+  <link rel="stylesheet" href="style.css">
+ 
+
+   <!-- .order-btn:hover {
+      background-color: #e48b00;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    } -->
+</head>
+<body class="menu-page">
+
+  <header id="menu-header">
+    <h1 style="color: #f59e0b;">Delicious Bites</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <h1 id="h1-menu">Our Menu</h1>
+  <div class="menu-grid" id="menuContainer"></div>
+  <button class="order-btn" onclick="goToOrder()">Go to Order</button>
+
+  <script>
+    const menuContainer = document.getElementById('menuContainer');
+    let cart = [];
+
+    fetch('/api/menu')
+      .then(res => res.json())
+      .then(items => {
+        items.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'menu-card';
+          card.innerHTML = `
+            <img src="${item.image_url}" alt="${item.name}">
+            <div class="menu-content">
+              <h3>${item.name}</h3>
+              <p>${item.description}</p>
+              <div class="menu-details">
+                <div class="price">₹${item.price.toFixed(2)}</div>
+                <div class="stepper">
+                  <button onclick="updateQty(${item.food_id}, -1)">-</button>
+                  <span id="qty-${item.food_id}">1</span>
+                  <button onclick="updateQty(${item.food_id}, 1)">+</button>
+                </div>
+              </div>
+              <button class="add-button" onclick="addToCart(${item.food_id}, '${item.name}', ${item.price})">Add to Order</button>
+            </div>
+          `;
+          menuContainer.appendChild(card);
+        });
+      });
+
+    function updateQty(id, change) {
+      const qtyElem = document.getElementById(`qty-${id}`);
+      let qty = parseInt(qtyElem.innerText);
+      qty += change;
+      if (qty < 1) qty = 1;
+      qtyElem.innerText = qty;
+    }
+
+    function addToCart(id, name, price) {
+      const qty = parseInt(document.getElementById(`qty-${id}`).innerText);
+      const existing = cart.find(item => item.food_id === id);
+      if (existing) {
+        existing.quantity += qty;
+      } else {
+        cart.push({ food_id: id, name, price, quantity: qty });
+      }
+
+      alert(`${name} added to cart.`);
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function goToOrder() {
+      if (cart.length === 0 && !localStorage.getItem('cart')) {
+        alert('No items selected.');
+        return;
+      }
+      window.location.href = 'order.html';
+    }
+  </script>
+</body>
+</html>

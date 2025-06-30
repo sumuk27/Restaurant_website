@@ -1,0 +1,442 @@
+/* public/style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  
+}
+
+body {
+  background-color: #fefefe;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #ff6347;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 6%;
+  background: black no-repeat center center/cover;
+  color: white;
+  min-height: 100vh;
+}
+
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-content h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.hero-content .btn {
+  padding: 0.75rem 2rem;
+  background: #ff6347;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.hero-content .btn:hover {
+  background: white;
+  color: #ff6347;
+}
+
+.hero-image img {
+  /*max-width: 500px;*/
+  width: 150%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+
+.hero .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #ff6347;
+  color: rgb(244, 238, 238);
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #3a3636;
+  color: rgb(249, 245, 245);
+  margin-top: 0.1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  body.login-page {
+      background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240425/pngtree-top-desk-with-blur-restaurant-background-wooden-table-image_15665383.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background-color: #a95c3572;
+      border: 1px solid #f7f6f8;
+      padding: 30px 40px;
+      width: 500px;
+      height: 500px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .login-box h1 {
+      font-family: 'Billabong', cursive;
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .login-box input {
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+    }
+
+    .login-box button {
+      width: 100%;
+      height: 60px;
+      background-color: #ff6347;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .separator {
+      margin: 20px 0;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .login-box .google-login {
+      color: #385185;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .login-box a {
+      display: block;
+      color: #00376b;
+      font-size: 12px;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    .signup-box {
+      border: 1px solid #ddd;
+      margin-top: 20px;
+      padding: 20px;
+      text-align: center;
+      background-color: #8d5324cf;
+    }
+
+    .signup-box a {
+      color: #0095f6;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    body.registration-page {
+      background-image: url('https://t4.ftcdn.net/jpg/01/83/56/87/360_F_183568705_ZSwGi22gf9astsmwg0OryjrVr4trGANf.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup_box {
+      background-color: #ffffff00;
+      border: 1px solid #ddd;
+      padding: 30px 40px;
+      width: 600px;
+      height: 600px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .signup_box h1 {
+      font-family: 'Billabong', cursive;
+      font-size: 45px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .signup_box input {
+      width: 100%;
+      height: 45px;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+    }
+
+    .signup_box button {
+      width: 100%;
+      height: 40px;
+      background-color: #ff6347;
+      color: white;
+      font-size: 17px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup_box a {
+      display: block;
+      color: #00376b;
+      font-size: 17px;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    .login-link {
+      margin-top: 20px;
+      font-size: 18px;
+      color: white;
+    }
+
+    .login-link a {
+      color: #0095f6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    body.menu-page {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f7f6;
+      padding: 40px 20px;
+    
+      background-image: url('https://img.freepik.com/premium-photo/black-stone-food-background-cooking-ingredients-top-view-free-space-your-text_187166-12990.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+
+  #menu-header {
+
+  background: #403f3fdc;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+    
+    
+    #h1-menu {
+      text-align: center;
+      color:  #f59e0b;
+      margin-bottom: 40px;
+      font-family: Arial, sans-serif;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px 40px;
+      max-width: 1200px;
+      margin: auto;
+      
+    }
+
+    .menu-card {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+      background-color: #403f3fdc;
+    }
+
+    .menu-card img {
+      width: 100px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .menu-content {
+      flex: 1;
+    }
+
+    .menu-content h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #faf8f8;
+    }
+
+    .menu-content p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #c8c5c5;
+    }
+
+    .menu-details {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #f59e0b;
+    }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stepper button {
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      background: #f59e0b;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .stepper span {
+      min-width: 20px;
+      text-align: center;
+      color: whitesmoke;
+    }
+
+    .add-button {
+      margin-top: 10px;
+      background-color: #f59e0b;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .add-button:hover {
+      background-color: #e58e00;
+    }
+
+    .order-btn {
+      display: block;
+      margin: 50px auto 0;
+      padding: 12px 24px;
+      background-color: #f59e0b;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .order-btn:hover {
+      background-color: #e48b00;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
